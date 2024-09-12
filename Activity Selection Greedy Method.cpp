@@ -58,3 +58,4 @@ int main()
     cout<<"\n";
     printMaxActivities(s, f, n);
     return 0;
+}
