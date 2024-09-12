@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 struct Package
@@ -14,7 +15,7 @@ bool compareByRatio(Package a, Package b)
 }
 
 double maxReach(vector<pair<int, int>>& packages, int W)
-{
+ {
     vector<Package> packageList;
 
     for (const auto& p : packages)
@@ -34,9 +35,8 @@ double maxReach(vector<pair<int, int>>& packages, int W)
             totalReach += pkg.reach;
             currentBudget -= pkg.cost;
         }
-
         else
-            {
+        {
             totalReach += pkg.reachPerCost * currentBudget;
             break;
         }
@@ -47,9 +47,23 @@ double maxReach(vector<pair<int, int>>& packages, int W)
 
 int main()
 {
-    int m = 4;
-    vector<pair<int, int>> packages = {{500, 100}, {800, 150}, {2000, 300}, {1200, 200}};
-    int W = 400;
+    int n;
+    cout << "Enter the number of packages: ";
+    cin >> n;
+
+    vector<pair<int, int>> packages(n);
+
+    cout << "Enter the reach and cost for each package:" << endl;
+    for (int i = 0; i < n; ++i)
+        {
+        int reach, cost;
+        cin >> reach >> cost;
+        packages[i] = {reach, cost};
+    }
+
+    int W;
+    cout << "Enter the available budget: ";
+    cin >> W;
 
     double result = maxReach(packages, W);
 
